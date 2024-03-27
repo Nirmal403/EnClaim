@@ -101,9 +101,9 @@ const HeadofAssociate = () => {
 
   
   return (
-    <>
+    <Box bg='#0A4836'>
       <Box
-        bg='#0A4836'
+        bg='#edf2f7'
         px={4}
         margin="auto"
         width="80%"
@@ -119,21 +119,24 @@ const HeadofAssociate = () => {
             order={{ base: 1, md: 1 }}
           />
           <HStack spacing={8} alignItems={"center"}>
-            <Box>
+            <Box onClick={gohome} cursor="pointer">
               <Image src={logo} htmlWidth="100px" />
             </Box>
             
 
             <HStack
             //   border='3px solid red'
-              bg='#0A4836'
+              bg='#edf2f7'
               as={"nav"}
               spacing={8}
               display={{ base: "none", md: "flex" }}
             //   onClick={gohome}
             >
               {Links.map((link) => (
-                <NavLink   bg='#0A4836' key={link} href={`#${link.toLowerCase()}`}>
+                <NavLink   bg='#edf2f7' key={link}
+                //  href={`#${link.toLowerCase()}`}
+                href={`/`}
+                 >
                   {link}
                 </NavLink>
               ))}
@@ -197,6 +200,9 @@ const HeadofAssociate = () => {
                 borderRadius="md"
                 boxShadow="md"
                 textAlign="center"
+                width={{ base: "80%", sm: "calc(50% - 1rem)", md: "auto" }}
+
+             
               >
                 <Avatar name={member.name} src={member.avatar} bg={"#0A4836"} color='white'/>
                 <Text mt={2}>{member.name}</Text>
@@ -209,7 +215,7 @@ const HeadofAssociate = () => {
 
 
       {/* <Footer /> */}
-    </>
+    </Box>
   );
 };
 

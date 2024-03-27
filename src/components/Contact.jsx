@@ -53,7 +53,7 @@ const ContactPage = () => {
           <FormControl id="phone" isRequired>
             <FormLabel>Phone number</FormLabel>
             <HStack spacing={2}>
-              <Input as="select">
+              <Input as="select" width='30%'>
                 <option>IND</option>
                 {/* Add other country options here */}
               </Input>
@@ -68,40 +68,15 @@ const ContactPage = () => {
             <FormLabel>Message</FormLabel>
             <Textarea placeholder="Type your message..." />
           </FormControl>
-          <Button colorScheme="green" size="lg" isFullWidth>
-            Send Message
+          <Button colorScheme="green" bg="#00b838" width="100%" size="lg" isFullWidth borderRadius="24px">
+            Send Message {"->"}
           </Button>
         </VStack>
       </Box>
-      <VStack flex="1" alignItems="start" p={8} m={4} spacing={5}  bg={"white"}
-       >
-        <Heading
-          size="md"
-          color="#808080"
-          fontFamily="League Spartan"
-          fontSize="20px"
-          fontWeight="400"
-          lineHeight="28px"
-          textAlign="left"
-          
-        >
-          Address
-        </Heading>
-        <Text
-          textAlign={"left"}
-          color="#313131"
-          fontFamily="League Spartan"
-          fontSize="20px"
-          fontWeight="600"
-          lineHeight="26px"
-          bg={"white"}
-        >
-          5/792, Nc Colony, Veppadai, Elanthakutai PO, Komarapalayam TK,
-          Namakkal - 638008.
-        </Text>
-        <HStack  bg={"white"}>
-          {/* <AtSignIcon /> */}
-          <Text
+      <VStack flex="1" alignItems="start" p={8} m={4} spacing={5} bg={"white"}>
+        <Flex alignItems="center" justifyContent="space-between" width="full" gap={"10%"}>
+          <Heading
+            size="md"
             color="#808080"
             fontFamily="League Spartan"
             fontSize="20px"
@@ -109,29 +84,46 @@ const ContactPage = () => {
             lineHeight="28px"
             textAlign="left"
           >
-            Email:
-          </Text>
-          <Text
-            textAlign={"left"}
-            color="#313131"
-            fontFamily="League Spartan"
-            fontSize="20px"
-            fontWeight="600"
-            lineHeight="26px"
+            Address
+          </Heading>
+          <Link
+            color="green.500"
+            href="#"
+            fontSize="10px"
+            isExternal
+            textDecor="none"
           >
-            info@enclaim.in
-          </Text>
-        </HStack>
-        <HStack  bg={"white"}>
-          <PhoneIcon />
-          <Text>+91 95433 08666</Text>
-        </HStack>
-        <HStack>
-          {/* <MapPinIcon /> */}
-          <Link color="green.500" href="#" isExternal>
-            View on map
+            View on map{"->"}
           </Link>
-        </HStack>
+        </Flex>
+        {/* Address */}
+        <Text
+          textAlign={"left"}
+          color="#313131"
+          fontFamily="League Spartan"
+          fontSize="16px"
+          fontWeight="600"
+          lineHeight="26px"
+          bg={"white"}
+        >
+          5/792, Nc Colony, Veppadai, Elanthakutai PO, Komarapalayam TK,
+          Namakkal - 638008.
+        </Text>
+        
+        <Flex alignItems="center" bg="gray.100" p={2} borderRadius="md" width="100%">
+          <AtSignIcon mr={2} />
+          <Text mr={2}>Email:</Text>
+          <Link href="mailto:info@enclaim.in" isExternal textDecor="none" _hover={{ textDecoration: 'none' }}>
+            info@enclaim.in
+          </Link>
+        </Flex>
+
+        <Flex alignItems="center" bg="gray.100" p={2} borderRadius="md" width="100%">
+          <PhoneIcon mr={2} />
+          <Link href="tel:+919543308666" textDecor="none" _hover={{ textDecoration: 'none' }}>
+            +91 95433 08666
+          </Link>
+        </Flex>
       </VStack>
     </Flex>
   );

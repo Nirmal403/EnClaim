@@ -25,15 +25,21 @@ function App() {
             element={
               <>
                 <Header />
-                <About />
+                <div id="aboutSection">
+                  <About />
+                </div>
                 <AboutOurFounder />
                 <EnclaimPartners />
                 <EnclaimUsers />
                 <EnclaimAssociates />
                 <DesignationOfAssociates />
-                <TheTimeline />
+                <div id="ourVisionSection">
+                  <TheTimeline />
+                </div>
                 <OurVision />
-                <ContactPage />
+                <div id="contactSection">
+                  <ContactPage />
+                </div>
               </>
             }
           />

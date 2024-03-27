@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -28,6 +28,7 @@ import Redefining from "../assests/Redefining Marketing with Authenticity and Im
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import "../App.css";
 import { extendTheme } from "@chakra-ui/react";
+import { Link } from "react-scroll";
 
 const Links = ["Home", "About", "Stakeholders", "Milestone"]; // Removed 'Our Team' since it will be a Menu
 const OurTeamSubMenu = ["Head of Associate →"]; // Replace with actual team members
@@ -63,6 +64,23 @@ const SimpleNavbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const bgColor = useColorModeValue("white", "gray.800");
   const direction = useBreakpointValue({ base: "column", md: "row" });
+  const menuRef = useRef();
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        onClose(); // Close the menu if clicked outside
+      }
+    };
+
+    // Add click event listener
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose]);
 
   const gohome = () => {
     navigate("/");
@@ -77,6 +95,7 @@ const SimpleNavbar = () => {
         bg={useColorModeValue("gray.100", "gray.900")}
         px={4}
         margin="auto"
+        // height={{base:'60px'}}
         width="80%"
         borderRadius="26px"
       >
@@ -90,7 +109,7 @@ const SimpleNavbar = () => {
             order={{ base: 1, md: 1 }}
           />
           <HStack spacing={8} alignItems={"center"}>
-            <Box>
+            <Box onClick={gohome} cursor="pointer">
               <Image src={logo} htmlWidth="100px" />
             </Box>
 
@@ -102,9 +121,24 @@ const SimpleNavbar = () => {
               // onClick={gohome}
             >
               {Links.map((link) => (
-                <NavLink key={link} href={`#${link.toLowerCase()}`}>
+                <Link
+                  key={link}
+                  to={
+                    link === "Home"
+                      ? "homeSection"
+                      : link === "Milestone"
+                      ? "ourVisionSection"
+                      : `${link.toLowerCase()}Section`
+                  } // Ensure IDs are set correctly in your components
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                  className="navbar-link"
+                  style={{ cursor: "pointer", padding: "10px" }}
+                >
                   {link}
-                </NavLink>
+                </Link>
               ))}
               <Menu>
                 <MenuButton as={Button} rounded={"md"}>
@@ -118,20 +152,43 @@ const SimpleNavbar = () => {
                   ))}
                 </MenuList>
               </Menu>
-              <Button
+              {/* <Button
                 bgColor="#00B838"
                 color="white"
                 gap="10px"
                 borderRadius="22px"
               >
                 Contact →
-              </Button>
+              </Button> */}
+              <Link
+                to="contactSection"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                className="contact-button"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#00B838",
+                  color: "white",
+                  // marginTop:'4%',
+                  padding: "0 24px",
+                  height: "40px",
+                  borderRadius: "22px",
+                  cursor: "pointer",
+                }}
+              >
+                Contact →
+              </Link>
             </HStack>
           </HStack>
         </Flex>
 
         {isOpen && (
           <Box
+            ref={menuRef}
             position="absolute"
             right="0"
             mt="2"
@@ -142,11 +199,94 @@ const SimpleNavbar = () => {
             zIndex="overlay"
           >
             <VStack align="stretch" spacing={3}>
-              {Links.map((link) => (
-                <NavLink key={link} href={`#${link.toLowerCase()}`}>
-                  {link}
-                </NavLink>
-              ))}
+              {Links.map((link) => {
+                if (link === "Milestone") {
+                  // Render a 'react-scroll' Link for "Milestone"
+                  return (
+                    <Link
+                      key="milestone"
+                      to="ourVisionSection" // The 'id' of the Our Vision section
+                      spy={true}
+                      smooth={true}
+                      offset={-70}
+                      duration={500}
+                      className="navbar-link"
+                      style={{ cursor: "pointer" }}
+                    >
+                      {link}
+                    </Link>
+                  );
+                } else if (link === "About") {
+                  // Assuming you have a special case for "About" as well
+                  return (
+                    <Link
+                      key="about"
+                      to="aboutSection"
+                      spy={true}
+                      smooth={true}
+                      offset={-70}
+                      duration={500}
+                      className="navbar-link"
+                      style={{ cursor: "pointer" }}
+                    >
+                      {link}
+                    </Link>
+                  );
+                } else {
+                  // Return other links as they were
+                  return (
+                    <NavLink key={link} href={`#${link.toLowerCase()}`}>
+                      {link}
+                    </NavLink>
+                  );
+                }
+              })}
+
+              {/* <Menu>
+                <MenuButton as={Button}>Our Team</MenuButton>
+                <MenuList>
+                  <MenuItem onClick={onClose}>Head of Associate →</MenuItem>
+                </MenuList>
+              </Menu>
+              <Link href="#contact" onClick={onClose}>
+                Contact →
+              </Link> */}
+              <Menu>
+                <MenuButton as={Button} rounded={"md"}>
+                  Our Team <i class="arrow down"></i>
+                </MenuButton>
+                <MenuList color="#00B838" fontWeight={"400"}>
+                  {OurTeamSubMenu.map((member) => (
+                    <MenuItem onClick={gotoheadofassociates} key={member}>
+                      {member}
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </Menu>
+              <Link
+            to="contactSection"
+            spy={true}
+            smooth={true}
+            offset={-70}
+            duration={500}
+            className="contact-button"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "#00B838",
+              color: "white",
+              marginTop: "4%",
+              padding: "0 24px",
+              height: "40px",
+              borderRadius: "22px",
+              cursor: "pointer",
+            }}
+          >
+            Contact →
+          </Link>
+
+
             </VStack>
           </Box>
         )}
@@ -164,7 +304,7 @@ const SimpleNavbar = () => {
       >
         <Box flex={{ base: "none", md: "1" }} align="left" justify="left">
           <Image src={EnClaim} />
-          <Button
+          {/* <Button
             bgColor="#00B838"
             color="white" // Assuming you want the text color to be white
             gap="10px"
@@ -172,7 +312,30 @@ const SimpleNavbar = () => {
             borderRadius="22px"
           >
             Contact →
-          </Button>
+          </Button> */}
+
+          <Link
+            to="contactSection"
+            spy={true}
+            smooth={true}
+            offset={-70}
+            duration={500}
+            className="contact-button"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "#00B838",
+              color: "white",
+              marginTop: "4%",
+              padding: "0 24px",
+              height: "40px",
+              borderRadius: "22px",
+              cursor: "pointer",
+            }}
+          >
+            Contact →
+          </Link>
         </Box>
         <Image
           src={Employee}
