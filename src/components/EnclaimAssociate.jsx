@@ -1,11 +1,11 @@
 import React from "react";
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
-import EnclaimPartner from "../assests/என்Claim Partner.png";
-import Partner from "../assests/Partners.png";
+import EnclaimAssociate from "../assests/என்Claim Associate.png";
+import Associate from "../assests/13123595_5164516 1.png";
 
-const EnclaimPartners = () => {
+const EnclaimAssociates = () => {
   return (
-    <Box bg="rgba(245, 245, 245, 1)" >
+    <Box bg="rgba(245, 245, 245, 1)">
       <Flex
         bg="rgba(245, 245, 245, 1)"
         direction={{ base: "column", md: "row" }} // Stack on mobile, row on desktop
@@ -23,7 +23,7 @@ const EnclaimPartners = () => {
           <Image
             marginTop={"8%"}
             marginBottom={"4%"}
-            src={EnclaimPartner}
+            src={EnclaimAssociate}
             alignContent="left"
           />
           <Text
@@ -36,11 +36,12 @@ const EnclaimPartners = () => {
             width="100%"
             // border="1px solid red"
           >
-            Partners are businesses seeking to fulfill their marketing needs by
-            leveraging EnClaim's strategic marketing solutions. They aim to
-            enhance their visibility, attract potential customers, and cultivate
-            a loyal customer base through targeted marketing campaigns
-            facilitated by EnClaim.
+            Users comprise potential buyers who actively engage with the
+            platform to earn cashback rewards. They participate by submitting
+            their bills and inviting businesses to join the EnClaim network.
+            These users are motivated by the opportunity to save money and
+            maximize their purchasing power through cashback incentives offered
+            by EnClaim.
           </Text>
         </Box>
         <Box
@@ -49,10 +50,10 @@ const EnclaimPartners = () => {
           justifyContent="flex-end"
           //   border="1px solid red"
         >
-          <Image mt="8%" mb="4%" src={Partner} />
+          <Image mt="8%" mb="4%" src={Associate} />
         </Box>
       </Flex>
-
+        
       <Flex
         bg="#313131"
         direction={{ base: "column", md: "row" }} // Stack on mobile, row on desktop
@@ -61,19 +62,19 @@ const EnclaimPartners = () => {
         gap="4" // Spacing between items
         p={4}
         // border="1px solid red"
-        borderRadius={'24px'}
+        borderRadius={"24px"}
         mt={{ base: "5%", md: "2%" }} // Responsive margin-top
         w="80%" // Take the full width of the container
         margin="auto"
         // border="1px solid blue"
       >
+        
         <Box
           width={{ base: "100%", md: "33.3%" }}
           textAlign="left"
           p={{ base: "2", md: "4" }}
-          
         >
-          <Text 
+              <Text 
                 fontFamily="'League Spartan', sans-serif" // Ensure League Spartan is loaded in your project
                 fontSize="22px"
                 fontWeight="700"
@@ -101,7 +102,7 @@ const EnclaimPartners = () => {
             color="#E2E2E2" // Added for better readability; adjust as needed
             p={1}
           >
-            என்Claim Partnership Registration
+           Build your circle
           </Text>
           <Text
             fontFamily="'League Spartan', sans-serif" // Make sure the font is imported and available
@@ -111,9 +112,7 @@ const EnclaimPartners = () => {
             textAlign="left"
             color="#939393"
           >
-            Businesses are required to register as EnClaim partners to list
-            offers for their products and services based on the agreed
-            conditions.
+            Identify potential users with a passion to earn passive income and build your circle.
           </Text>
         </Box>
         <Box
@@ -141,7 +140,7 @@ const EnclaimPartners = () => {
             color="#E2E2E2" // Added for better readability; adjust as needed
             p={1}
           >
-            Verify and Approve User Bills
+            Achieve the milestones
           </Text>
           <Text
             fontFamily="'League Spartan', sans-serif" // Make sure the font is imported and available
@@ -151,9 +150,7 @@ const EnclaimPartners = () => {
             textAlign="left"
             color="#939393"
           >
-            Partners must verify and approve user bills within 30 days of
-            submission in compliance with the established guidelines and
-            policies.
+            Reach the milestones set by EnClaim to achieve the Associate Status.
           </Text>
         </Box>
         <Box
@@ -181,7 +178,7 @@ const EnclaimPartners = () => {
             color="#E2E2E2" // Added for better readability; adjust as needed
             p={1}
           >
-            Make Payments to என்Claim
+            Earn passive income
           </Text>
           <Text
             fontFamily="'League Spartan', sans-serif" // Make sure the font is imported and available
@@ -191,9 +188,7 @@ const EnclaimPartners = () => {
             textAlign="left"
             color="#939393"
           >
-            Partners are responsible for clearing the accumulated amount for
-            bill submissions within the specified timeline (Within 5th of every
-            month).
+            Get EnClaim cashback on yours and the bills submitted by the users in your circle.
           </Text>
         </Box>
       </Flex>
@@ -201,4 +196,4 @@ const EnclaimPartners = () => {
   );
 };
 
-export default EnclaimPartners;
+export default EnclaimAssociates;

@@ -76,12 +76,13 @@ const SimpleNavbar = () => {
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
             order={{ base: 1, md: 1 }}
-          />
+          />  
           <HStack spacing={8} alignItems={"center"}>
             <Box>
               <Image src={logo} htmlWidth="100px" />
             </Box>
             <HStack
+              // border='3px solid red'
               as={"nav"}
               spacing={4}
               display={{ base: "none", md: "flex" }}

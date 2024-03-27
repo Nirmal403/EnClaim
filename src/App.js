@@ -5,6 +5,10 @@ import Header from './components/Header';
 import AboutOurFounder from './components/AboutOurFounder';
 import About from './components/About';
 import EnclaimPartners from './components/EnclaimPartners';
+import EnclaimUsers from './components/EnclaimUsers';
+import EnclaimAssociates from './components/EnclaimAssociate';
+import DesignationOfAssociates from './components/DesignationOfAssociates';
+import TheTimeline from './components/TheTimeline';
 
 function App() {
   return (
@@ -14,6 +18,10 @@ function App() {
      <About/>
      <AboutOurFounder/>
      <EnclaimPartners/>
+     <EnclaimUsers/>
+     <EnclaimAssociates/>
+     <DesignationOfAssociates/>
+     <TheTimeline/>
     </div>
     </ChakraProvider>
   );
