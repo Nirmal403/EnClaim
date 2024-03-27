@@ -1,10 +1,10 @@
 import React from 'react'
-import Navbar from './Navbar'
+import SimpleNavbar from './Navbar';
 import '../App.css';
 const Header = () => {
   return (
   <div className='header'>
-     <Navbar/>
+     <SimpleNavbar/>
     
   </div>
   )

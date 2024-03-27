@@ -1,10 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Box,
   Flex,
   Avatar,
   Image,
+  Heading,
   VStack,
   HStack,
   IconButton,
@@ -21,15 +21,15 @@ import {
   useBreakpointValue,
   Stack,
 } from "@chakra-ui/react";
-import logo from "../assests/Logo.png";
-import Employee from "../assests/Employee-Expense-Claim-2 1.png";
-import EnClaim from "../assests/என்Claim Where Personal Interaction Drives Business Success.png";
-import Redefining from "../assests/Redefining Marketing with Authenticity and Impact.png";
+import logo from "../../assests/Logo.png";
+import Employee from "../../assests/Employee-Expense-Claim-2 1.png";
+import EnClaim from "../../assests/என்Claim Where Personal Interaction Drives Business Success.png";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import "../App.css";
+import "../../App.css";
 import { extendTheme } from "@chakra-ui/react";
-
-const Links = ["Home", "About", "Stakeholders", "Milestone"]; // Removed 'Our Team' since it will be a Menu
+import {useNavigate} from 'react-router-dom'
+import Footer from "../../components/Footer";
+const Links = ["Home", "About", "Stakeholders", "Milestone",]; // Removed 'Our Team' since it will be a Menu
 const OurTeamSubMenu = ["Head of Associate →"]; // Replace with actual team members
 
 export const theme = extendTheme({
@@ -41,6 +41,8 @@ export const theme = extendTheme({
     // ... other color schemes
   },
 });
+
+
 
 const NavLink = ({ children, href }) => (
   <Button
@@ -58,23 +60,50 @@ const NavLink = ({ children, href }) => (
   </Button>
 );
 
-const SimpleNavbar = () => {
-  const navigate = useNavigate();
+const HeadofAssociate = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const bgColor = useColorModeValue("white", "gray.800");
   const direction = useBreakpointValue({ base: "column", md: "row" });
+  const navigate = useNavigate();
 
-  const gohome = () => {
+
+  const gohome =()=>{
     navigate("/");
-  };
-  const gotoheadofassociates = () => {
-    navigate("/headofassociates");
-  };
+  }
+  const teamMembers = [
+    {
+      name: 'Anandraj Ponnusamy',
+      location: 'Erode, TN',
+      avatar: '' // Path to Anandraj's avatar image
+    },
+    {
+      name: 'P.Kangaraj',
+      location: 'Karur, TN',
+      avatar: '' // Path to Kangaraj's avatar image
+    },
+    {
+      name: 'Manimaran Vilum',
+      location: 'Dharmapuri, TN',
+      avatar: '' // Path to Manimaran's avatar image
+    },
+    {
+      name: 'Prabhu Yogeshwaran',
+      location: 'Namakkal, TN',
+      avatar: '' // Path to Prabhu's avatar image
+    },
+    {
+      name: 'Selvam Raman',
+      location: 'Coimbatore, TN',
+      avatar: '' // Path to Selvam's avatar image
+    }
+  ];
+  
 
+  
   return (
     <>
       <Box
-        bg={useColorModeValue("gray.100", "gray.900")}
+        bg='#0A4836'
         px={4}
         margin="auto"
         width="80%"
@@ -93,28 +122,28 @@ const SimpleNavbar = () => {
             <Box>
               <Image src={logo} htmlWidth="100px" />
             </Box>
+            
 
             <HStack
-              // border='3px solid red'
+            //   border='3px solid red'
+              bg='#0A4836'
               as={"nav"}
               spacing={8}
               display={{ base: "none", md: "flex" }}
-              // onClick={gohome}
+            //   onClick={gohome}
             >
               {Links.map((link) => (
-                <NavLink key={link} href={`#${link.toLowerCase()}`}>
+                <NavLink   bg='#0A4836' key={link} href={`#${link.toLowerCase()}`}>
                   {link}
                 </NavLink>
               ))}
-              <Menu>
+              <Menu >
                 <MenuButton as={Button} rounded={"md"}>
-                  Our Team <i class="arrow down"></i>
+                  Our Team  <i class="arrow down"></i>
                 </MenuButton>
-                <MenuList color="#00B838" fontWeight={"400"}>
+                <MenuList color="#00B838" fontWeight={'400'}>
                   {OurTeamSubMenu.map((member) => (
-                    <MenuItem onClick={gotoheadofassociates} key={member}>
-                      {member}
-                    </MenuItem>
+                    <MenuItem key={member}>{member}</MenuItem>
                   ))}
                 </MenuList>
               </Menu>
@@ -152,37 +181,36 @@ const SimpleNavbar = () => {
         )}
       </Box>
 
-      <Flex
-        direction={{ base: "column", md: "row" }} // Stack on mobile, row on desktop
-        align="center" // Align items vertically in the center
-        justify={{ base: "center", md: "space-between" }} // Center on mobile, space-between on desktop
-        gap="4" // Spacing between items
-        p={4}
-        mt={{ base: "5%", md: "2%" }} // Responsive margin-top
-        w="80%" // Take the full width of the container
-        margin="auto"
-      >
-        <Box flex={{ base: "none", md: "1" }} align="left" justify="left">
-          <Image src={EnClaim} />
-          <Button
-            bgColor="#00B838"
-            color="white" // Assuming you want the text color to be white
-            gap="10px"
-            mt="5%"
-            borderRadius="22px"
-          >
-            Contact →
-          </Button>
-        </Box>
-        <Image
-          src={Employee}
-          borderRadius="20px"
-          boxSize={{ base: "100%", md: "30%" }}
-          objectFit="cover"
-        />
-      </Flex>
+      <Box as="main" p={4}  marginTop="5%" marginBottom="3%" bg='#0A4836'>
+        <VStack spacing={4} >
+          {/* Heading */}
+          <Heading color='white'>Head of Associates</Heading>
+          <Text color='white'>Home/ Our Team /Head of Associates</Text>
+          
+          {/* Team Member Grid */}
+          <Flex wrap="wrap" justifyContent="center" gap={4}>
+            {teamMembers.map((member) => (
+              <Box
+                key={member.name}
+                p={4}
+                bg="gray.100"
+                borderRadius="md"
+                boxShadow="md"
+                textAlign="center"
+              >
+                <Avatar name={member.name} src={member.avatar} bg={"#0A4836"} color='white'/>
+                <Text mt={2}>{member.name}</Text>
+                <Text fontSize="sm">{member.location}</Text>
+              </Box>
+            ))}
+          </Flex>
+        </VStack>
+      </Box>       
+
+
+      {/* <Footer /> */}
     </>
   );
 };
 
-export default SimpleNavbar;
+export default HeadofAssociate;

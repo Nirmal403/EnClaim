@@ -1,28 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
-import { ChakraProvider } from '@chakra-ui/react';
-import Header from './components/Header';
-import AboutOurFounder from './components/AboutOurFounder';
-import About from './components/About';
-import EnclaimPartners from './components/EnclaimPartners';
-import EnclaimUsers from './components/EnclaimUsers';
-import EnclaimAssociates from './components/EnclaimAssociate';
-import DesignationOfAssociates from './components/DesignationOfAssociates';
-import TheTimeline from './components/TheTimeline';
-
+import logo from "./logo.svg";
+import "./App.css";
+import { ChakraProvider } from "@chakra-ui/react";
+import Header from "./components/Header";
+import AboutOurFounder from "./components/AboutOurFounder";
+import About from "./components/About";
+import EnclaimPartners from "./components/EnclaimPartners";
+import EnclaimUsers from "./components/EnclaimUsers";
+import EnclaimAssociates from "./components/EnclaimAssociate";
+import DesignationOfAssociates from "./components/DesignationOfAssociates";
+import TheTimeline from "./components/TheTimeline";
+import OurVision from "./components/OurVision";
+import ContactPage from "./components/Contact";
+import Footer from "./components/Footer";
+import HeadofAssociate from "./pages/Homepage.jsx/HeadofAssociate";
+import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <ChakraProvider>
-    <div className="App">
-     <Header/>
-     <About/>
-     <AboutOurFounder/>
-     <EnclaimPartners/>
-     <EnclaimUsers/>
-     <EnclaimAssociates/>
-     <DesignationOfAssociates/>
-     <TheTimeline/>
-    </div>
+      <div className="App">
+        {/* Other routes... */}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Header />
+                <About />
+                <AboutOurFounder />
+                <EnclaimPartners />
+                <EnclaimUsers />
+                <EnclaimAssociates />
+                <DesignationOfAssociates />
+                <TheTimeline />
+                <OurVision />
+                <ContactPage />
+              </>
+            }
+          />
+          <Route path="/headofassociates" element={<HeadofAssociate />} />
+        </Routes>
+        <Footer />
+      </div>
     </ChakraProvider>
   );
 }
