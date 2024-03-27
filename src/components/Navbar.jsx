@@ -126,6 +126,8 @@ const SimpleNavbar = () => {
                   to={
                     link === "Home"
                       ? "homeSection"
+                      : link === "Stakeholders"
+                      ? "Designation"
                       : link === "Milestone"
                       ? "ourVisionSection"
                       : `${link.toLowerCase()}Section`
