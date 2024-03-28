@@ -2,6 +2,7 @@
   text-align: center;
   min-width: "430px";
   max-width: "1440px";
+  
 }
 .App-logo {
   height: 40vmin;
@@ -37,7 +38,7 @@
 
 .header {
   background-color: #0a4836;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .navbar {

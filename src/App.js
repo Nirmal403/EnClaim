@@ -32,7 +32,7 @@ function App() {
                 <EnclaimPartners />
                 <EnclaimUsers />
                 <EnclaimAssociates />
-                <div id='Designation'>
+                <div id='Designation'>  
                 <DesignationOfAssociates />
                 </div>
                 <div id="ourVisionSection">

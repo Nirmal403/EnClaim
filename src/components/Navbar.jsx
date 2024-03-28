@@ -98,8 +98,9 @@ const SimpleNavbar = () => {
         // height={{base:'60px'}}
         width="80%"
         borderRadius="26px"
+        
       >
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+        <Flex h={16} alignItems={"center"} justifyContent={"space-between"} >
           <IconButton
             size={"md"}
             icon={isOpen ? <HamburgerIcon /> : <HamburgerIcon />}
@@ -107,6 +108,7 @@ const SimpleNavbar = () => {
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
             order={{ base: 1, md: 1 }}
+            
           />
           <HStack spacing={8} alignItems={"center"}>
             <Box onClick={gohome} cursor="pointer">
@@ -234,7 +236,25 @@ const SimpleNavbar = () => {
                       {link}
                     </Link>
                   );
-                } else {
+                } else if (link === "Stakeholders") {
+                  // Assuming you have a special case for "About" as well
+                  return (
+                    <Link
+                      key="stakeholders"
+                      to="Designation"
+                      spy={true}
+                      smooth={true}
+                      offset={-70}
+                      duration={500}
+                      className="navbar-link"
+                      style={{ cursor: "pointer" }}
+                    >
+                      {link}
+                    </Link>
+                  );
+                }
+                
+                else {
                   // Return other links as they were
                   return (
                     <NavLink key={link} href={`#${link.toLowerCase()}`}>
