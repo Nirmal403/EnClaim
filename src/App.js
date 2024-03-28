@@ -13,8 +13,71 @@ import OurVision from "./components/OurVision";
 import ContactPage from "./components/Contact";
 import Footer from "./components/Footer";
 import HeadofAssociate from "./pages/Homepage.jsx/HeadofAssociate";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom"; 
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import { scroller } from 'react-scroll';
+import { useEffect } from "react";
 function App() {
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+ 
+  
+  useEffect(() => {
+    if (location.state?.scrollTo === 'aboutSection') {
+      // Perform the scroll
+      scroller.scrollTo('aboutSection', {
+        duration: 800,
+        delay: 0,
+        smooth: 'easeInOutQuart',
+        offset: -70, // Adjust based on your needs
+      });
+  
+      // Clear the state after scrolling
+      navigate(location.pathname, { replace: true, state: {} });
+
+    }else if (location.state?.scrollTo === 'ourVisionSection') {
+      // Perform the scroll
+      scroller.scrollTo('ourVisionSection', {
+        duration: 800,
+        delay: 0,
+        smooth: 'easeInOutQuart',
+        offset: -70, // Adjust based on your needs
+      });
+  
+      // Clear the state after scrolling
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+    else if (location.state?.scrollTo === 'home') {
+      // Perform the scroll
+      scroller.scrollTo('home', {
+        duration: 800,
+        delay: 0,
+        smooth: 'easeInOutQuart',
+        offset: -70, // Adjust based on your needs
+      });
+  
+      // Clear the state after scrolling
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+    else if (location.state?.scrollTo === 'Designation') {
+      // Perform the scroll
+      scroller.scrollTo('Designation', {
+        duration: 800,
+        delay: 0,
+        smooth: 'easeInOutQuart',
+        offset: -70, // Adjust based on your needs
+      });
+  
+      // Clear the state after scrolling
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location, navigate]);
+
+
+
   return (
     <ChakraProvider>
       <div className="App">
@@ -24,7 +87,9 @@ function App() {
             path="/"
             element={
               <>
+                <div id='home'>
                 <Header />
+                </div>
                 <div id="aboutSection">
                   <About />
                 </div>
